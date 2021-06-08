@@ -69,7 +69,8 @@ top: 0px;
 }
 
 li 
-{ 
+{
+  list-style: none;
   list-style-image: url('http://bit.ly/qunMkL'); 
   list-style-position: inside;
 }
