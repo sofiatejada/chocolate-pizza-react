@@ -1,5 +1,6 @@
 import './App.css';
 import React, { Component } from 'react'
+import { IngredientItemsLeft, IngredientItemsRight } from './data.js';
 
 class Header extends Component {
   render() {
@@ -21,7 +22,7 @@ class Header extends Component {
         </header>
         <div class= "hr-bottom">
             
-        </div><br/>
+        </div>
     </section>
       </div>
     )
@@ -90,6 +91,20 @@ class ImageSection extends Component {
   render() {
     return (
       <div>
+        <section className="title-section">
+            <div>
+                <h1>
+                Chocolate Pizza
+                </h1>
+                <h4>
+                    POSTED ON 15 DEC 2013 / DESSERTS
+                </h4>
+            </div>
+            <div className="print">
+                <img src="print-icon.png" alt="print"/>
+                print
+            </div>
+        </section>
         <section className="main-image">
             <img src="choco-pizza.png" alt="choco"/>
         </section>
@@ -106,24 +121,24 @@ class IngredientsList extends Component {
             <ul className="instructions">
               <div className= "list-columns">
                   <section className= "left-list">
-                    <IngredientItem amount="1 1/2 cups" name="milk"/>
-                    <IngredientItem amount="1/2 cup" name="mascarpone"/>
-                    <IngredientItem amount="1/2 tsp" name="salt"/>
-                    <IngredientItem amount="1 lb" name="Black Mission Figs"/>
-                    <IngredientItem amount="1/2 cup" name="brown sugar"/>
-                    <IngredientItem amount="2-4 tbsp" name="water"/>
+                    {IngredientItemsLeft.map((item) => <IngredientItem amount={item.amount} name={item.name} />)}
                   </section>
                   <section className= "right-list">
-                    <IngredientItem amount="1 1/2 cups" name="heavy cream"/>
-                    <IngredientItem amount="1/3 cup" name="granualted sugar"/>
-                    <IngredientItem amount="2" name="egg yolks"/>
-                    <IngredientItem amount="1" name="lemon, juiced"/>
-                    <IngredientItem amount="2 tbsp" name="butter"/>
-                    <IngredientItem amount="1 cup" name="honey roasted pecans, roughly chopped"/>
+                    {IngredientItemsRight.map((item) => <IngredientItem amount={item.amount} name={item.name} />)}
                   </section>
                 </div>
             </ul>
         </div>
+      </div>
+    )
+  }
+}
+
+class IngredientItem extends Component {
+  render() {
+    return (
+      <div>
+        <li>{this.props.amount} {this.props.name}</li>
       </div>
     )
   }
@@ -147,16 +162,6 @@ class ButtonList extends Component {
                     <img src= "mail-icon.png" alt="mail"/>
                 </div>
             </div>
-      </div>
-    )
-  }
-}
-
-class IngredientItem extends Component {
-  render() {
-    return (
-      <div>
-        <li>{this.props.amount} {this.props.name}</li>
       </div>
     )
   }
